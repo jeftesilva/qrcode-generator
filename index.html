@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto QRCode com VueJs</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <div>
+            <input class="qrcode-text" type="text" size="25" 
+                placeholder="Digite para gerar..."
+                v-model="text" />
+        </div>
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode" />
+        </div>
+    </div>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() { 
+                return {
+                    title: "Gerador de QRCode",
+                    text: "https://projetoqrcodecomvuejs.com.br",
+                    qrCode: new QRious({ size: 300 })
+                };
+            },
+            computed: {
+                newQRCode() {
+                    this.qrCode.value = this.text;
+                    return this.qrCode.toDataURL()
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
