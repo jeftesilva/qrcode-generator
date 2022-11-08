@@ -1,4 +1,4 @@
-Gerador de QRCode - Atividade do Curso de Desenvolvimento Web
+# Gerador de QRCode - Atividade do Curso de Desenvolvimento Web
 
 Hospedado no GitHub Pages: https://jeftesilva.github.io/qrcode-generator/
 
